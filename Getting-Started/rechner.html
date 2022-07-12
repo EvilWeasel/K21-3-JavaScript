@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechner</title>
+</head>
+<body>
+    <input id="num1Input" type="number" name="num1Input" placeholder="Enter Number"/>
+    <input id="num2Input" type="number" name="num2Input" placeholder="Enter Number"/>
+    <button id="btn_calc" 
+        onclick="getElementById('result').innerHTML = getElementById('num1Input').value + getElementById('num2Input').value" 
+        name="btn_calc">
+        Calculate
+    </button>
+    <!-- 
+        <button onclick="myFunction(10)"></button>
+    -->
+    <p id="result">Result: </p>
+    
+
+</body>
+</html>
