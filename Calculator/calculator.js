@@ -15,10 +15,11 @@ class Calculator {
         this.previousOperandElement = previousOperandElement
         this.currentOperandElement = currentOperandElement
         this.clear()
+        this.updateDisplay()
     }
 
     clear() {
-        this.currentOperand = ''
+        this.currentOperand = '0'
         this.previousOperand = ''
     }
 
@@ -27,7 +28,11 @@ class Calculator {
     }
 
     appendNumber(number) {
-        this.currentOperand = this.currentOperand.toString() + number.toString()
+        if (number === '.' && this.currentOperand.includes('.')) return 
+        if (this.currentOperand[0] === '0' &&
+             number !== '.' &&
+              !this.currentOperand.includes(".")) this.currentOperand = number
+        else this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
     chooseOperation(operation) {
@@ -44,11 +49,23 @@ class Calculator {
     }
 }
 
+
 const calculator = new Calculator(previousOperandElement, currentOperandElement)
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        calculator.appendNumber(button.innerHTML)
+        calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
     })
+})
+
+clearButton.addEventListener('click', () => {
+    calculator.clear()
+    calculator.updateDisplay()
+})
+
+
+
+window.addEventListener('load', () => {
+    console.log("Hello Calculator!")
 })
