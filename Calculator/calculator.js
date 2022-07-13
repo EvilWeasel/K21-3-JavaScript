@@ -15,16 +15,19 @@ class Calculator {
         this.previousOperandElement = previousOperandElement
         this.currentOperandElement = currentOperandElement
         this.clear()
-        this.updateDisplay()
     }
 
     clear() {
         this.currentOperand = '0'
         this.previousOperand = ''
+        this.updateDisplay()
     }
 
     delete() {
-
+        if (this.currentOperand === '0') return
+        this.currentOperand = this.currentOperand.slice(0, -1)
+        if (this.currentOperand.length === 0) this.currentOperand = '0'
+        this.updateDisplay()
     }
 
     appendNumber(number) {
@@ -33,14 +36,49 @@ class Calculator {
              number !== '.' &&
               !this.currentOperand.includes(".")) this.currentOperand = number
         else this.currentOperand = this.currentOperand.toString() + number.toString()
+        this.updateDisplay()
     }
 
     chooseOperation(operation) {
-
+        // if (this.currentOperandElement.innerText === 'NaN') {
+        //     this.clear()
+        //     return
+        // }
+        this.operation = operation
+        //this.previousOperand = this.currentOperand + operation
+        this.previousOperand = `${this.currentOperand} ${this.operation}`
+        this.currentOperand = '0'
+        this.updateDisplay()
     }
 
     calculate() {
-
+        let result
+        // if (this.currentOperandElement.innerText === 'NaN') {
+        //     this.clear()
+        //     return
+        // }
+        const prev = parseFloat(this.previousOperand.slice(0, -2))
+        const curr = parseFloat(this.currentOperand)
+        switch (this.operation) {
+            case '+':
+                result = prev + curr
+                break
+            case '-':
+                result = prev - curr
+                break
+            case '*':
+                result = prev * curr
+                break
+            case '/':
+                //if (curr === 0) {result = NaN; break}
+                result = prev / curr
+                break
+            default: return
+        }
+        this.currentOperand = result
+        //this.previousOperand = ''
+        //this.operation = undefined
+        this.updateDisplay()
     }
 
     updateDisplay() {
@@ -55,17 +93,38 @@ const calculator = new Calculator(previousOperandElement, currentOperandElement)
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
-        calculator.updateDisplay()
     })
 })
 
 clearButton.addEventListener('click', () => {
     calculator.clear()
-    calculator.updateDisplay()
+})
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText)
+    })
+})
+
+equalsButton.addEventListener('click', () => {
+    calculator.calculate()
+})
+
+deleteButton.addEventListener('click', () => {
+    calculator.delete()
 })
 
 
 
+// Executes a callback-function when the window (HTML) 
+// is fully loaded
 window.addEventListener('load', () => {
-    console.log("Hello Calculator!")
+    let message = "Hello World!"
+    let password = document.querySelector('[data-password]').innerHTML
+    console.log(password)
+})
+
+document.querySelector('[data-clickme]').addEventListener('click', () => {
+    let password = document.querySelector('[data-password]').innerText
+    console.log(password)
 })
