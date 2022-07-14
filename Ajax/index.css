@@ -1,0 +1,36 @@
+body {
+    font-size: 16px;
+    background: rgb(0,41,47);
+    background: linear-gradient(90deg, rgba(0,41,47,1) 0%, rgba(8,64,83,1) 47%, rgba(0,70,91,1) 100%);
+}
+
+.navbar > .navbar-container {
+    display: flex;
+    flex-direction: row
+    ;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+}
+
+.navbar > .navbar-container > .navbar-item > * {
+    font-size: 2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbar-item > a {
+    color: darkcyan;
+}
+
+nav.navbar {
+    border-bottom: 5px dotted black;
+    padding-bottom: 1em;
+}
+
+.logo {
+    display: inline-block;
+    height: auto;
+    width: 5em;
+    margin-right: 4em;
+}
