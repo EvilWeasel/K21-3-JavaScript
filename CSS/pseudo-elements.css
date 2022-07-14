@@ -1,0 +1,18 @@
+p::before {
+    color: black;
+    width: 100px;
+    height: 100px;
+    content: "!!!";
+}
+
+p::first-line {
+    color: magenta;
+}
+
+p {
+    color: darkblue;
+}
+
+input::placeholder {
+    font-size: 32px;
+}
