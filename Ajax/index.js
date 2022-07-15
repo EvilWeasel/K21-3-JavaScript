@@ -13,7 +13,10 @@ function loadData() {
 
     const xhttp = new XMLHttpRequest()
     xhttp.onload = function() {
-        dataTargetElement.innerHTML = this.responseText
+        let data = this.responseText
+        console.log(data)
     }
-    xhttp.open('GET', '')
+    xhttp.open('GET', 'sampleData.json') // same as below
+    // xhttp.open('GET', 'sampleData.json', true)
+    xhttp.send()
 }
