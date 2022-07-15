@@ -1,14 +1,13 @@
 body {
     font-size: 16px;
-    background: rgb(0,41,47);
+    /* background: rgb(0,41,47); */
     /* background: linear-gradient(90deg, rgba(0,41,47,1) 0%, rgba(8,64,83,1) 47%, rgba(0,70,91,1) 100%); */
     background-color: bisque;
 }
 
 .navbar > .navbar-container {
     display: flex;
-    flex-direction: row
-    ;
+    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
