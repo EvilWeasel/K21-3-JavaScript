@@ -34,3 +34,26 @@ nav.navbar {
     width: 5em;
     margin-right: 4em;
 }
+
+/* Neue Regeln für Flexbox und Cards */
+.content-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    min-width: 100px;
+    max-width: 30ch;
+    margin: 1em;
+    background-color: lightcyan;
+}
+
+.card-header {
+    color: darkblue;
+    font-size: 2em;
+}
+
+.card-body {
+    font-size: 1.5em;
+}

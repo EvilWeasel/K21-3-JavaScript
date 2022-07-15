@@ -24,13 +24,21 @@ function loadData() {
         // console.log(jsonData)
         data.forEach((person) => {
             let personCardElement = document.createElement("div")
+            personCardElement.classList.add('card')
             let cardHeader = document.createElement("h1")
             let cardBody = document.createElement("p")
+            let cardImage = document.createElement("img")
+            
+            cardImage.src = 'https://avatars.dicebear.com/api/human/lug.svg'
 
             cardHeader.innerText = person.name + " " + person.lastname
+            cardHeader.classList.add('card-header')
+
             cardBody.innerText = "Ich bin " + person.age + " Jahre alt :D"
+            cardBody.classList.add('card-body')
 
 
+            personCardElement.appendChild(cardImage)
             personCardElement.appendChild(cardHeader)
             personCardElement.appendChild(cardBody)
             contentContainerElement.appendChild(personCardElement)
