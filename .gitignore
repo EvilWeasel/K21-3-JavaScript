@@ -1,0 +1,4 @@
+**/node_modules
+# nodejs-personapi/node_modules
+# nodejs-personclient/node_modules
+**/package-lock.json

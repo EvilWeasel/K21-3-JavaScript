@@ -1,23 +1,12 @@
-// node-js http-module
-const http = require('http');
+const PORT = 5000;
+const express = require('express');
+const r_index = require('./routes/r_index');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const app = express();
 
-// req => request
-// res => response
-let server = http.createServer(function (req, res) {
-  if (req.url == '/') {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello Client!');
-  } else if (req.url == '/home') {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write('<html><body><h1>Hello HomePage <3</h1></body></html>');
-    res.end();
-  }
-});
+// Setup Routers
+app.use('/', r_index);
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}`);
+app.listen(PORT, () => {
+  console.log(`Http-Server listening on port ${PORT}`);
 });
