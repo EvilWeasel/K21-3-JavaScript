@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
 
 // HTTP-Methods
 /*
-  - get    --> Daten abfragen
-  - post   --> Request hat einen "Body"
-  - put    --> Veränderungen an Daten auf dem Server ==> Hat wie POST einen Body!
-  - delete --> Quasi wie ein POST
+  - GET    --> Daten abfragen
+  - POST   --> Request hat einen "Body"
+  - PUT    --> Veränderungen an Daten auf dem Server ==> Hat wie POST einen Body!
+  - DELETE --> Quasi wie ein POST
 */
 
 // POST: http://localhost:5000/person
@@ -56,7 +56,28 @@ router.get('/:id', (req, res) => {
 })
 
 // Change Person
+// let id = req.body.id
+// let p = new Person(req.body.Person.firstName)
+router.put('/:id', (req, res) => {
+  let id = req.params.id
+  let p = person_list.find(x => x.id == id)
+  console.log("Person vor Änderung",p)
+  if (p !== undefined) res.status(404)
+  p.firstName = req.body.firstName ?? p.firstName
+  p.lastName = req.body.lastName ?? p.lastName
+  p.age = req.body.age ?? p.age
+  p.mail = req.body.mail ?? p.mail
+  p.street = req.body.street ?? p.street
+  p.number = req.body.number ?? p.number
+  p.postal = req.body.postal ?? p.postal
+  p.city = req.body.city ?? p.city
+  
+  console.log("Person nach Änderung",p)
+  res.status(200).send(JSON.stringify(p))
+})
 
+
+// DELETE: http://localhost:5000/person/1
 // Delete Person
 
 module.exports = router;
