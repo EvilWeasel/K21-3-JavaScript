@@ -11,7 +11,8 @@
   - ort
 */
 class Person {
-  constructor(firstName, lastName, age, mail, street, number, postal, city) {
+  constructor(id, firstName, lastName, age, mail, street, number, postal, city) {
+    this.id = id
     this.firstName = firstName;
     this.lastName = lastName;
     this.mail = mail;

@@ -13,6 +13,8 @@ const app = express();
 app.use(express.json());
 
 // Setup Routers
+// Index => http://localhost:5000/
+// Person => http://localhost:5000/person
 app.use('/', r_index);
 app.use('/person', r_person);
 
