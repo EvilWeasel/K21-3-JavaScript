@@ -4,7 +4,12 @@ const router = express.Router();
 // Import Person-Model
 const Person = require('../models/person');
 
+// Import fs-helper
+const { saveAllPersons, loadAllPersons } = require('../helper/fs_person')
+
 let person_list = new Array();
+
+person_list = loadAllPersons();
 
 // GET: http://localhost:5000/person
 // List<Person>
@@ -15,16 +20,16 @@ router.get('/', (req, res) => {
 
 // HTTP-Methods
 /*
-  - GET    --> Daten abfragen
-  - POST   --> Request hat einen "Body"
-  - PUT    --> Veränderungen an Daten auf dem Server ==> Hat wie POST einen Body!
-  - DELETE --> Quasi wie ein POST
+  * CRUD => Create / Read / Update / Delete
+  - Read:   GET    --> Daten abfragen
+  - Create: POST   --> Request hat einen "Body"
+  - Update: PUT    --> Veränderungen an Daten auf dem Server ==> Hat wie POST einen Body!
+  - Delete: DELETE --> Quasi wie ein POST
 */
 
 // POST: http://localhost:5000/person
 // Create Person
 router.post('/', (req, res) => {
-  //console.log(req.body);
   let p = new Person(
     person_list.length + 1,
     req.body.firstName,
@@ -37,8 +42,8 @@ router.post('/', (req, res) => {
     req.body.city
   );
   person_list.push(p);
+  saveAllPersons(person_list)
 
-  console.log(person_list);
   req.body === {} ? res.status(400) : res.status(200).send(p);
 });
 
@@ -72,7 +77,7 @@ router.put('/:id', (req, res) => {
   p.postal = req.body.postal ?? p.postal
   p.city = req.body.city ?? p.city
   
-  console.log("Person nach Änderung",p)
+  saveAllPersons(person_list)
   res.status(200).send(JSON.stringify(p))
 })
 
@@ -83,6 +88,7 @@ router.delete('/:id', (req, res) => {
   let id = req.params.id
   let p = person_list.find(p => p.id == id)
   person_list.splice(person_list.indexOf(p), 1)
+  saveAllPersons(person_list)
   res.status(200).send(p)
 })
 
