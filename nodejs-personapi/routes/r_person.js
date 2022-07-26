@@ -10,7 +10,7 @@ let person_list = new Array();
 // List<Person>
 router.get('/', (req, res) => {
   let data = JSON.stringify(person_list);
-  res.send(data);
+  res.status(200).send(data);
 });
 
 // HTTP-Methods
@@ -79,5 +79,26 @@ router.put('/:id', (req, res) => {
 
 // DELETE: http://localhost:5000/person/1
 // Delete Person
+router.delete('/:id', (req, res) => {
+  let id = req.params.id
+  let p = person_list.find(p => p.id == id)
+  person_list.splice(person_list.indexOf(p), 1)
+  res.status(200).send(p)
+})
 
 module.exports = router;
+
+// class myarry {
+
+//   function myindexof(obj) {
+//     for each elem in myarry{
+//       if obj === elem return elem
+//     }
+//   }
+//   function myfind(myfunction){
+//     for each elem in myarry {
+//       let mybool = myfunction(elem)
+//       if (mybool) 
+//     }
+//   }
+// }
