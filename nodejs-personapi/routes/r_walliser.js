@@ -66,16 +66,16 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   let id = req.params.id
   let b = dogbreed_list.find(x => x.id == id)
-  console.log("Hunderasse vor Änderung",p)
+  console.log("Hunderasse vor Änderung", b)
   if (b !== undefined) res.status(404)
-  b.name = req.body.name ?? p.name
-  b.origin = req.body.origin ?? p.origin
-  b.ears = req.body.ears ?? p.ears
-  b.size = req.body.size ?? p.size
-  b.classification = req.body.classification ?? p.classification
-  b.eyes = req.body.eyes ?? p.eyes
-  b.character = req.body.character ?? p.character
-  b.color = req.body.color ?? p.color
+  b.name = req.body.name ?? b.name
+  b.origin = req.body.origin ?? b.origin
+  b.ears = req.body.ears ?? b.ears
+  b.size = req.body.size ?? b.size
+  b.classification = req.body.classification ?? b.classification
+  b.eyes = req.body.eyes ?? b.eyes
+  b.character = req.body.character ?? b.character
+  b.color = req.body.color ?? b.color
   
   saveAllDogbreeds(dogbreed_list)
   res.status(200).send(JSON.stringify(b))
@@ -86,7 +86,7 @@ router.put('/:id', (req, res) => {
 // Delete Dogbreed
 router.delete('/:id', (req, res) => {
   let id = req.params.id
-  let b = dogbreed.find(b => b.id == id)
+  let b = dogbreed_list.find(b => b.id == id)
   dogbreed_list.splice(dogbreed_list.indexOf(b), 1)
   saveAllDogbreeds(dogbreed_list)
   res.status(200).send(b)
