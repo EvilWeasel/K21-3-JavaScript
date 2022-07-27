@@ -1,6 +1,7 @@
 const PORT = 5000;
 const express = require('express');
 //const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const r_index = require('./routes/r_index');
 const r_person = require('./routes/r_person');
@@ -9,6 +10,7 @@ const r_wehrle_wetter = require('./routes/r_wehrle_wetter');
 const r_walliser = require('./routes/r_walliser')
 
 const app = express();
+app.use(cors())
 
 // Setup Body-Parsing
 // MiddleWare => Code, der bei jedem Aufruf des Servers ausgeführt wird, bevor der Router-Code ausgeführt wird
