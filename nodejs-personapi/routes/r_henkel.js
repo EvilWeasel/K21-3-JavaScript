@@ -5,11 +5,11 @@ const router = express.Router();
 const Weather = require('../models/henkel');
 
 // Import fs-helper
-//const { saveAllWeather, loadAllWeather } = require('../helper/fs_henkel')
+const { saveAllWeather, loadAllWeather } = require('../helper/fs_henkel')
 
 let weather_list = new Array();
 
-//weather_list = loadAllWeather();
+weather_list = loadAllWeather();
 
 // GET: http://localhost:5000/weather
 // List<Weather>
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
     req.body.amountOfSun
   );
   weather_list.push(w);
-  //saveAllWeather(weather_list)
+  saveAllWeather(weather_list)
 
   req.body === {} ? res.status(400) : res.status(200).send(w);
 });
@@ -67,7 +67,7 @@ router.put('/:day', (req, res) => {
   w.amountOfRain = req.body.amountOfRain ?? w.amountOfRain
   w.amountOfSun = req.body.amountOfSun ?? w.amountOfSun
   
-  //saveAllWeather(weather_list)
+  saveAllWeather(weather_list)
   res.status(200).send(JSON.stringify(w))
 })
 
@@ -78,7 +78,7 @@ router.delete('/:day', (req, res) => {
   let day = req.params.day
   let w = weather_list.find(w => w.day == day)
   weather_list.splice(weather_list.indexOf(w), 1)
-  //saveAllWeather(weather_list)
+  saveAllWeather(weather_list)
   res.status(200).send(w)
 })
 
