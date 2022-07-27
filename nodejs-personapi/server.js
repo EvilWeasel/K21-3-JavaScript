@@ -4,6 +4,7 @@ const express = require('express');
 
 const r_index = require('./routes/r_index');
 const r_person = require('./routes/r_person');
+const r_walliser = require('./routes/r_walliser')
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 // Person => http://localhost:5000/person
 app.use('/', r_index);
 app.use('/person', r_person);
+app.use('/walliser', r_walliser)
 
 app.listen(PORT, () => {
   console.log(`Http-Server listening on port ${PORT}`);
