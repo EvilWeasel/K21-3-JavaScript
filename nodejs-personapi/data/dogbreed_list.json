@@ -1,0 +1,35 @@
+[
+  {
+    "id": 2,
+    "name": "Labrador",
+    "origin": "USA",
+    "ears": "long",
+    "size": "54cm",
+    "classification": "Hunting Doggo",
+    "eyes": 2,
+    "character": "always hangry",
+    "color": "black"
+  },
+  {
+    "id": 3,
+    "name": "Labrador",
+    "origin": "USA",
+    "ears": "long",
+    "size": "54cm",
+    "classification": "Hunting Doggo",
+    "eyes": 2,
+    "character": "always hangry",
+    "color": "black"
+  },
+  {
+    "id": 4,
+    "name": "Labrador",
+    "origin": "USA",
+    "ears": "long",
+    "size": "54cm",
+    "classification": "Hunting Doggo",
+    "eyes": 2,
+    "character": "always hangry",
+    "color": "black"
+  }
+]
