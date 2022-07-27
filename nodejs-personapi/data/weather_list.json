@@ -1,0 +1,38 @@
+[
+  {
+    "day": 1,
+    "temperature": "25",
+    "amountOfRain": "0",
+    "amountOfSun": 18
+  },
+  {
+    "day": 2,
+    "temperature": "30",
+    "amountOfRain": "0",
+    "amountOfSun": 18
+  },
+  {
+    "day": 3,
+    "temperature": "30",
+    "amountOfRain": "0",
+    "amountOfSun": 18
+  },
+  {
+    "day": 4,
+    "temperature": "30",
+    "amountOfRain": "0",
+    "amountOfSun": 18
+  },
+  {
+    "day": 5,
+    "temperature": "30",
+    "amountOfRain": "0",
+    "amountOfSun": 18
+  },
+  {
+    "day": 6,
+    "temperature": "30",
+    "amountOfRain": "0",
+    "amountOfSun": 18
+  }
+]
